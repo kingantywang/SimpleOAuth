@@ -1,0 +1,74 @@
+﻿@model OAuth.Provider.ViewModels.AccessManagerViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head lang="zh-cn">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width;initial-scale=1.0" />
+    <title>确认权限</title>
+    <link href="~/Scripts/bootstrap-3.3.4/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/accessmanager.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div id="wrap">
+
+        <!-- Begin page content -->
+        <div class="container">
+            <div class="page-header">
+                <h3>@ViewBag.Website 正在请求您的用户权限</h3>
+            </div>
+            <div class="col-lg-4">
+                <img />
+            </div>
+            <div class="col-lg-8">
+                @using (Html.BeginForm("AccessManager", "OAuth", FormMethod.Post, new { @class = "form-horizontal" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <fieldset>
+                        <div id="legend">
+                        </div>
+                        <div class="control-group">
+                            <div class="controls">
+                                @Html.HiddenFor(model => model.WebsiteId)
+                                <!-- Multiple Checkboxes -->
+                                <label class="checkbox">
+
+                                    @Html.CheckBoxFor(model => model.AccessAccount, new { @disabled = true, @value = true })
+                                    访问您的基本资料
+                                </label>
+                                <label class="checkbox">
+                                    @Html.CheckBoxFor(model => model.AccessResource, new { @value = true })
+                                    访问其他的资源
+                                </label>
+                            </div>
+
+                        </div>
+                        <div class="control-group">
+                            <!-- Button -->
+                            <div class="controls">
+                                <input type="submit" class="btn btn-success" value="确定" />
+                            </div>
+                        </div>
+                    </fieldset>
+                }
+            </div>
+        </div>
+        <div id="push"></div>
+    </div>
+
+    <div id="footer">
+        <div class="container">
+            <p class="muted credit">&copy;2015 Powered By <a href="#">Simple OAuth</a>.</p>
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-2.1.4.js"></script>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

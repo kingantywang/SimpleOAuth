@@ -1,0 +1,38 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+    <link href="~/Scripts/bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/login.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="~/Scripts/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+
+        <form class="form-signin" action="/Account/Login?returnUrl=@ViewBag.ReturnUrl" method="post">
+            @Html.AntiForgeryToken()
+            <h2 class="form-signin-heading">内部OAuth账号登入</h2>
+            <label for="inputEmail" class="sr-only">用户名</label>
+            <input type="text" id="inputEmail" class="form-control" placeholder="用户名" required autofocus name="Name">
+            <label for="inputPassword" class="sr-only">密码</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="密码" required name="Password">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="remember-me" name="Remember"> 记住密码
+                </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">登入</button>
+        </form>
+
+    </div> <!-- /container -->
+</body>
+</html>

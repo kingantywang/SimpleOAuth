@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+<button id="test">Test</button>
+<button id="getInfo">Test2</button>
+<script src="~/Scripts/jquery-1.8.2.js"></script>
+<script type="text/javascript">
+    $("#test").click(function () {
+        $.ajax({
+            url: "http://localhost:2084/OAuth/AccessToken?OpenId=2074788254&Code=373f3fdd6e3c7a9c&ClientID=100001&ReturnUrl=localhost:1992/OAuth/AuthorizeCode",
+            type: "GET",
+            datatype: "json",
+            success: function (res) {
+                console.log(res);
+            }
+        });
+    });
+    $("#getInfo").click(function () {
+        $.ajax({
+            url: "http://localhost:2084/UserInfo/Resource?ClientId=1001&AccessToken=4de1b5c62f70fa9c&OpenId=2074788254",
+            type: "GET",
+            datatype: "json",
+            success: function (res) {
+                console.log(res);
+            }
+        });
+    });
+</script>
+
+<a href="http://localhost:2084/OAuth/AccessManager?ClientId=100001&ResponseType=Code&ReturnUrl=localhost:1992/OAuth/AuthorizeCode">使用Simple OAuth账号登入</a>

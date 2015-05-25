@@ -1,0 +1,10 @@
+﻿<div class="navbar-form navbar-right">
+    @if (string.IsNullOrEmpty(ViewBag.UserName))
+    {
+        @Html.ActionLink("登录", "Login", "Account", null,new { @class = "btn btn-success" });
+    }
+    else
+    {
+        @Html.ActionLink("退出", "LogOff", "Account", null, new { @class = "btn btn-success" });
+    }
+</div>
